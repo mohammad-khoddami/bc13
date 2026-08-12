@@ -1,0 +1,15 @@
+.text-green {
+    color: green;
+}
+
+.text-red {
+    color: red;
+}
+
+.card {
+    border: 1px solid #000;
+    border-radius: 5px;
+    padding: 10px;
+    width: max-content;
+    direction: rtl;
+}

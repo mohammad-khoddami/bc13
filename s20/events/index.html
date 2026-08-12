@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link href="./main.css" rel="stylesheet" />
+        <title>Document</title>
+    </head>
+    <body>
+        <button id="click-btn">Click on me</button>
+
+        <!-- <input onkeydown="handleKeyDown(event)" />
+        <input onkeyup="handleKeyUp(event)" /> -->
+
+        <input onkeyup="print(event)" />
+        <p id="p1"></p>
+
+        <div class="accordion">
+            <div class="acc-header">
+                <h2>This is accordion</h2>
+                <button onclick="handleToggle(event)">hide</button>
+            </div>
+            <div class="acc-body" id="acc-body">
+                <p>
+                    This is accordion This is accordion This is accordion This
+                    is accordion This is accordion This is accordion This is
+                    accordion This is accordion This is accordion This is
+                    accordion This is accordion
+                </p>
+            </div>
+        </div>
+
+        <!-- <div
+            class="box"
+            onmouseenter="handleEnter(event)"
+            onmouseleave="handleLeave(event)"
+        >
+            <div class="inner-box"></div>
+        </div> -->
+        <!-- <div
+            class="box"
+            onmouseover="handleEnter(event)"
+            onmouseout="handleLeave(event)"
+        >
+            <div class="inner-box"></div>
+        </div> -->
+        <!-- <div class="box" onmousemove="handleMove(event)"></div> -->
+
+        <div
+            id="enter-div"
+            onmouseenter="handleEnterMenu()"
+            style="width: max-content"
+        >
+            <p>دسته بندی کالاها</p>
+        </div>
+
+        <script src="./app.js"></script>
+    </body>
+</html>

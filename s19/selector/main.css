@@ -1,0 +1,31 @@
+.text-green {
+    color: green;
+}
+
+.box {
+    width: 150px;
+    height: 150px;
+    background-color: gray;
+}
+
+.box-red {
+    background-color: red;
+}
+.box-blue {
+    background-color: blue;
+}
+.box-yellow {
+    background-color: yellow;
+}
+.box-green {
+    background-color: green;
+}
+.box-orange {
+    background-color: orange;
+}
+.box-pink {
+    background-color: pink;
+}
+.box-purple {
+    background-color: purple;
+}
