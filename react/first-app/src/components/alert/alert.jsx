@@ -1,3 +1,7 @@
+import { useContext } from "react";
+import MySpan from "./mySpan";
+import NameContext from "../../contexts/nameContext";
+
 const getColor = (variant) => {
     switch (variant) {
         case "success":
@@ -30,11 +34,14 @@ const getColor = (variant) => {
 
 export default function Alert({ variant, text }) {
     const color = getColor(variant);
+    const name = useContext(NameContext);
     return (
         <div
             className={`${color.bg} border ${color.border} rounded-md py-4 px-20 w-fit`}
         >
-            <span className={color.text}>{text}</span>
+            <MySpan text={text} />
+            <span>{name}</span>
+            {/* <span className={color.text}>{text}</span> */}
         </div>
     );
 }
