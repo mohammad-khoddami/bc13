@@ -13,6 +13,8 @@ import ResizeWindow from "./components/resizeWindow";
 import Timer from "./components/timer";
 import NameContext from "./contexts/nameContext";
 import ThemeContext from "./contexts/themeContext";
+import DelayCounter from "./components/delay-counter";
+import { sum } from "./utils/math";
 
 const products = [
     {
@@ -93,6 +95,11 @@ export default function App() {
                 <NameContext.Provider value={name}>
                     <Alert text={name} />
                 </NameContext.Provider>
+                <DelayCounter />
+
+                {sum(2, 3)}
+                {sum("nima", "hoseinis")}
+                {sum(false, "a")}
                 {/* <button onClick={() => setShow(!show)} className="border">
                 {show ? "hide" : "show"}
             </button>
