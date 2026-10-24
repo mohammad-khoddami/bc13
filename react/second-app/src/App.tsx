@@ -1,16 +1,26 @@
-import switcher, { isEven, sum, sumOrConcat } from "./utils/math";
+import { BrowserRouter, Route, Routes } from "react-router";
+import PostListPage from "./pages/post/post-list-page";
+import HomePage from "./pages/home/home-page";
+import Layout from "./components/layout";
+import PostItem from "./pages/post/post-item";
+import NotFound from "./pages/notfound/notFound";
 
 function App() {
-    const a = sumOrConcat("aaa", "aa");
-
-    const sw = switcher("loading");
     return (
-        <div>
-            <p>{sum(2, 3)}</p>
-            <p>{isEven(12)}</p>
-            <p>{a}</p>
-            <p>{sw}</p>
-        </div>
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<Layout />}>
+                    <Route index element={<HomePage />} />
+                    <Route path="/post-list" element={<PostListPage />}>
+                        <Route
+                            path="/post-list/:postId"
+                            element={<PostItem />}
+                        />
+                    </Route>
+                    <Route path="*" element={<NotFound />} />
+                </Route>
+            </Routes>
+        </BrowserRouter>
     );
 }
 
