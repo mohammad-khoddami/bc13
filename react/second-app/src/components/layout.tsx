@@ -21,6 +21,14 @@ export default function Layout() {
                     >
                         Posts
                     </NavLink>
+                    <NavLink
+                        to="built-in-hooks"
+                        className={({ isActive }) =>
+                            isActive ? "border-b-2 text-white" : ""
+                        }
+                    >
+                        Built-in Hooks
+                    </NavLink>
                 </nav>
             </header>
             <main className="mx-6 my-4 p-2 border rounded-sm">

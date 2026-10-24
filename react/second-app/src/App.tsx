@@ -4,6 +4,10 @@ import HomePage from "./pages/home/home-page";
 import Layout from "./components/layout";
 import PostItem from "./pages/post/post-item";
 import NotFound from "./pages/notfound/notFound";
+import BuiltinHooksPage from "./pages/built-in-hooks/built-in-hooks-page";
+import UseRefPage from "./pages/built-in-hooks/useRefPage";
+import UseMemoPage from "./pages/built-in-hooks/useMemoPage";
+import UseCallbackPage from "./pages/built-in-hooks/useCallbackPage";
 
 function App() {
     return (
@@ -15,6 +19,23 @@ function App() {
                         <Route
                             path="/post-list/:postId"
                             element={<PostItem />}
+                        />
+                    </Route>
+                    <Route
+                        path="/built-in-hooks"
+                        element={<BuiltinHooksPage />}
+                    >
+                        <Route
+                            path="/built-in-hooks/useRef"
+                            element={<UseRefPage />}
+                        />
+                        <Route
+                            path="/built-in-hooks/useMemo"
+                            element={<UseMemoPage />}
+                        />
+                        <Route
+                            path="/built-in-hooks/useCallback"
+                            element={<UseCallbackPage />}
                         />
                     </Route>
                     <Route path="*" element={<NotFound />} />
