@@ -1,14 +1,16 @@
 import { useEffect, useState } from "react";
 import { Link, Outlet } from "react-router";
+import { useLike } from "../../store/useLike";
+import usePostList from "../../hooks/usePostList";
 
-type PostItem = {
+export type PostItem = {
     id: number;
     title: string;
     body: string;
     tags: string[];
 };
 
-type Post = {
+export type Post = {
     posts: PostItem[];
     total: number;
     skip: number;
@@ -16,25 +18,28 @@ type Post = {
 };
 
 export default function PostListPage() {
-    const [postList, setPostList] = useState<PostItem[]>([]);
-    const [isLoading, setIsLoading] = useState(true);
+    // const [postList, setPostList] = useState<PostItem[]>([]);
+    // const [isLoading, setIsLoading] = useState(true);
 
-    useEffect(() => {
-        const fetchPosts = async () => {
-            try {
-                setIsLoading(true);
-                const resp = await fetch("https://dummyjson.com/posts");
-                const result: Post = await resp.json();
-                setPostList(result.posts);
-            } catch {
-                console.log("Error");
-            } finally {
-                setIsLoading(false);
-            }
-        };
+    const { likeList, toggleLike } = useLike();
 
-        fetchPosts();
-    }, []);
+    const { postList, isLoading } = usePostList();
+    // useEffect(() => {
+    //     const fetchPosts = async () => {
+    //         try {
+    //             setIsLoading(true);
+    //             const resp = await fetch("https://dummyjson.com/posts");
+    //             const result: Post = await resp.json();
+    //             setPostList(result.posts);
+    //         } catch {
+    //             console.log("Error");
+    //         } finally {
+    //             setIsLoading(false);
+    //         }
+    //     };
+
+    //     fetchPosts();
+    // }, []);
 
     return (
         <section className="flex gap-2">
@@ -44,13 +49,25 @@ export default function PostListPage() {
                 ) : (
                     postList.map((post) => {
                         return (
-                            <Link
-                                key={post.id}
-                                to={`${post.id}`}
-                                className="block hover:text-blue-700"
-                            >
-                                {post.title}
-                            </Link>
+                            <p key={post.id} className="flex justify-between">
+                                <Link
+                                    to={`${post.id}`}
+                                    className="block hover:text-blue-700"
+                                >
+                                    {post.title}
+                                </Link>
+                                <button
+                                    onClick={() =>
+                                        toggleLike({
+                                            postId: post.id,
+                                            title: post.title,
+                                        })
+                                    }
+                                    className={`border rounded-md h-fit px-2 cursor-pointer ${likeList.some((p) => p.postId === post.id) ? "bg-red-500" : "bg-white"}`}
+                                >
+                                    Like
+                                </button>
+                            </p>
                         );
                     })
                 )}
