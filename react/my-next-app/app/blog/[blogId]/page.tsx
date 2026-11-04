@@ -1,5 +1,3 @@
-import React from "react";
-
 type SingleBlogType = {
     params: Promise<{ blogId: string }>;
 };
